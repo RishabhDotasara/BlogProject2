@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{%block title%}
+Home
+{%endblock title%}
+<style>
+    .active
+    {
+        width: 100vw;
+    }
+</style>
+
+{%block body%}
+<div class="wrapper">
+    {% if posts%}
+    {% for post in posts%}
+    <div class="blog_card{{forloop.counter}} blog_card">
+        <div class="image" >
+            <img src="{{post.thumbnail.url}}" alt="image">
+        </div> 
+        <div class="content">
+            <div class="title"x >{{post.title}}</div>
+            <div class="snippet "></div>
+            <div class="actual_content">{{post.content|safe}}</div>
+            <div class="date_uploaded">Posted on: {{post.posted_on}}</div>
+            <div class="author">By: <strong>{{post.author.author_name}}</strong> | <span class="desc">{{post.author.occupation}} {%if post.author.occupation == 'Student'%} | {{post.author.clg_yr}} Yr.{%endif%}</span></div>
+            <div class="likes">Views:{{post.views}}</div>
+            <button  class="submit_btn{{forloop.counter}} submit_btn" onclick="toggle_active('.blog_card{{forloop.counter}}','.submit_btn{{forloop.counter}}')">Read more..</button>
+            <button  class="submit_btn{{forloop.counter}} submit_btn_active" onclick="toggle_active('.blog_card{{forloop.counter}}','.submit_btn{{forloop.counter}}')">Close</button>
+        
+            <!-- <button class="submit_btn" style="background-color: red;">Delete</button> -->
+        
+            {{post.body|safe}}
+        </div>
+    </div>
+    {%endfor%}
+    {%endif%}
+</div>
+
+<script>
+    let buttons = document.querySelectorAll('.submit_btn')
+    let cards = document.querySelectorAll('.blog_cards')
+    function toggle_active(e,btn){
+        t = document.querySelector(e)
+        t.classList.toggle('active')
+        b = document.querySelector(btn)
+        // b.textContent = "Close"
+    }
+</script>
+{%endblock body%}

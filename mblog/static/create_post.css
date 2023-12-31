@@ -1,0 +1,33 @@
+.wrapper_create_post
+{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wrapper_create_post form
+{
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    border: 1px solid rgb(192, 188, 188);
+    flex-direction: column;
+    background: white;
+    padding: 10px 15px;
+    gap: 10px;
+}
+.wrapper_create_post form button
+{
+    width: 100%;
+    height: 15%;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px;
+    background-color: black;
+    color: white;
+}

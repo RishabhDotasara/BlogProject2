@@ -1,0 +1,38 @@
+.wrapper_profile_show
+{
+    /* border: 1px solid grey; */
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.wrapper_profile_show .card
+{
+    border: 1px solid grey;
+    padding: 10px 15px;
+    width: 30%;
+}
+.wrapper_profile_show .card input
+{
+    margin-bottom: 8px;
+    width: 97%;
+    height: auto;
+    padding: 5px 5px;
+}
+
+.wrapper_profile_show .card a 
+{
+    text-decoration: none;
+    background-color: black;
+    width: 00%;
+    height: 10%;
+    padding: 5px 10px;
+    
+    border: none;
+    border-radius: 10px;
+    color: white;
+}

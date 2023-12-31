@@ -1,0 +1,45 @@
+.wrapper_profile
+{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.wrapper_profile form
+{
+    border: 0.1px solid grey;
+    padding: 10px 15px;
+    width: 30%;
+}
+
+.wrapper_profile form span
+{
+    font-weight: 550;
+    /* margin-top: 20px; */
+    /* padding-top: 10px; */
+}
+
+.wrapper_profile form input
+{
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 97%;
+}
+.wrapper_profile form select
+{
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.wrapper_profile form button
+{
+    padding: 5px;
+    background: black;
+    color: white;
+    font-size: 15px;
+    width: 100%;
+}

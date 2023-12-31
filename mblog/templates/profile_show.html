@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%load static %}
+{%block title%}
+Profile-{{request.user.username}}
+{%endblock title%}
+
+{%block body%}
+<div class="wrapper_profile_show">
+    <div class="card">
+
+        <div class="label">Author Name</div>
+        <input type="text" readonly value="{{profile.author_name}}">
+        <div class="label">Occupation</div>
+        <input type="text" readonly value="{{profile.occupation}}">
+        <div class="label">Age</div>
+        <input type="text" readonly value="{{profile.age}}">
+        <div class="label">Degree Pursuing</div>
+        <input type="text" readonly value="{{profile.deg}}">
+        <div class="label">College Year</div>
+        <input type="text" readonly value="{{profile.clg_yr}}" style="margin-bottom: 15px;">
+        <a href="/update_profile" class="btn">Update Profile</a>
+    </div>
+    
+</div>
+{%endblock body%}

@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{%block title%}
+{{request.user.username}}-Update Profile
+{%endblock title%}
+
+{%block body%}
+<div class="wrapper_profile">
+    <!-- <h4 class="message">Please leave the fields college year and Degree pursuing EMPTY if you aren't a student.</h4> -->
+    <!-- <h4 class="message"></h4> -->
+    
+    
+    <form action="" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit">Change Profile</button>
+    </form>
+    <!-- {{profile.clg_yr}} -->
+</div>
+
+
+{%endblock body%}
