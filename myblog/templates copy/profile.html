@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+
+{%block title%}
+{{request.user.username}}-Profile
+{%endblock title%}
+
+{%block body%}
+<div class="wrapper_profile">
+    <h4 class="message">Please leave the fields college year and Degree pursuing EMPTY if you aren't a student.</h4>
+    
+    <form action="" method="post">
+        {%csrf_token%}
+        <span>Pen Name</span><br>
+        <input type="text" placeholder="pen name.."><br>
+        <span>Age</span><br>
+        <input type="text" placeholder="Age.."><br>
+        <span>Occupation</span><br>
+        <select name="occupation" id="occupation">
+            <option value="Student">Student</option>
+            <option value="Professor">Professor</option>
+            <option value="Worker">Worker</option>
+        </select><br>
+        <span>College Year</span><br>
+        <select name="clg_yr" id="clg_yr">
+            <option value="1">1st</option>
+            <option value="2">2nd</option>
+            <option value="3">3rd</option>
+        </select><br>   
+        <span>Degree Pursuing</span><br>
+        <select name="degree" id="degree">
+            <option value="B.Tech">B.Tech</option>
+            <option value="M.Tech">M.Tech</option>
+            <option value="BS">BS</option>
+            <option value="Ph.D">Ph.D</option>
+        </select>
+        <br>
+        <button type="submit">Change Profile</button>
+    </form>
+</div>
+
+{%endblock body%}

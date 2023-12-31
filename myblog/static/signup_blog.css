@@ -1,0 +1,28 @@
+.wrapper_signup
+{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.wrapper_signup form
+{
+    border: 0.1px solid grey;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 70px;
+    border-radius: 10px;
+}
+
+.wrapper_signup form button 
+{
+    background-color: black;
+    color: white;
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 10px ;
+}

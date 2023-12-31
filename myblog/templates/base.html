@@ -1,0 +1,43 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'base_blog.css'%}">
+    <link rel="stylesheet" href="{%static 'home_blog.css'%}">
+    <link rel="stylesheet" href="{%static 'login_blog.css'%}">
+    <link rel="stylesheet" href="{%static 'signup_blog.css'%}">
+    <link rel="stylesheet" href="{%static 'profile_blog.css'%}">
+    <title>{%block title%}{%endblock title%} | IITM-Blog</title>
+</head>
+<body>
+    <nav>
+        <div class="logo" style="color: white;"><a href="/" style="text-decoration: none;color: white;">IITM-Blog</a></div>
+        <form action="/" method="get" class="search_box">
+            <input type="text" placeholder="Search Article or author..." name="search">
+            <button type="submit">Search</button>
+        </form>
+        <div class="user">
+            {% if request.user.is_authenticated%}
+                <div class="login_btn"><a href="/auth/login" style="text-decoration: none;">LogOut</a></div>
+                {% if request.user.is_superuser%}
+                <div class="login_btn"><a href="/admin" style="text-decoration: none;">Panel</a></div>
+                {%else%}
+                <div class="login_btn"><a href="/profile" style="text-decoration: none;">Profile</a></div>
+
+                {%endif%}
+            {%else%}
+            <div class="login_btn"><a href="/auth/login" style="text-decoration: none;">LogIn</a></div>
+            <div class="login_btn"><a href="/auth/signup" style="text-decoration: none;">SignUp</a></div>
+            {%endif%}
+
+            
+        </div>
+    </nav>
+    {%block body%}
+    {%endblock body%}
+
+    
+</body>
+</html>

@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block title%}
+Login
+{%endblock title%}
+
+{%block body%}
+    <div class="wrapper_signup">
+        {% if messages%}
+        {% for message in messages%}
+        <div class="div">{{message}}</div>
+        {%endfor%}
+        {%endif%}
+        <form action="" method=POST>
+            {%csrf_token%}
+            <div class="login_name" style="font-size: 25px;;">SignUp</div>
+                {{form}}
+            <button type="submit">SignUp</button>
+        </form>
+        <a href="/auth/login">LogIn</a>
+    </div>
+    
+{%endblock body%}

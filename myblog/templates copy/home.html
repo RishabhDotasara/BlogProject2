@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{%block title%}
+Home
+{%endblock title%}
+
+{%block body%}
+<div class="wrapper">
+    {% if posts%}
+    {% for post in posts%}
+    <form class="blog_card" method="get">
+        <div class="image">
+            <img src="{{post.image.url}}" alt="image">
+        </div> 
+        <div class="content">
+            <div class="title" style="font-weight: bold;font-size: 1.2em;height: 50%;">{{post.title}}</div>
+            <div class="date_uploaded">Posted on: {{post.posted_on}}</div>
+            <div class="author">By: {{request.user.username}} | <span class="desc">Student | Fresher</span></div>
+            <div class="likes">Views:{{post.Views}}</div>
+            <button type="submit">Read more..</button>
+        </div>
+    </form>
+    {%endfor%}
+    {%endif%}
+    
+</div>
+
+
+{%endblock body%}

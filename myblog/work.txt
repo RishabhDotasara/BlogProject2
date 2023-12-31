@@ -1,0 +1,9 @@
+-login and signup system done
+- basic layout done
+
+TO DO:
+
+- author model
+- post model
+- likes and dislike system
+- post writing mechanism
