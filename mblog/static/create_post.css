@@ -15,9 +15,11 @@
     justify-content: center;
     border: 1px solid rgb(192, 188, 188);
     flex-direction: column;
-    background: white;
+    /* background: green   ; */
+    /* height: 10vh; */
     padding: 10px 15px;
     gap: 10px;
+    width: 90vw;
 }
 .wrapper_create_post form button
 {
@@ -27,6 +29,7 @@
     cursor: pointer;
     border-radius: 5px;
     outline: none;
+    text-align: center;
     padding: 5px;
     background-color: black;
     color: white;

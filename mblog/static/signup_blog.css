@@ -12,7 +12,8 @@
     border: 0.1px solid grey;
     padding: 50px;
     display: flex;
-    flex-direction: column;
+    height: 50%;
+    /* flex-direction: column; */
     gap: 15px;
     margin-top: 70px;
     border-radius: 10px;

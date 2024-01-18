@@ -1,16 +1,13 @@
-{% extends 'base.html'%}
+{%extends 'base.html'%}
 {%block title%}
-Home
-{%endblock title%} 
-<style>
-    .active
-    {
-        width: 100vw;
-    }
-</style>
-
+{{profile.author_name}}
+{%endblock title%}
 {%block body%}
-<div class="wrapper">
+<!-- <h3 style="font-size: 20em;">Posts by {{profile.author_name}}</h3> -->
+<div class="wrapper" style="padding-top: 40px;">
+    <div class="heading" style="position: fixed;left: 50%;transform:translateX(-50%);top:  100px;font-size: 35px;font-weight: bold;z-index: 0;width: 100vw;background: white;text-align: center;padding: 5px 0;">Posts by {{profile.author_name}}</div>
+
+    <!-- <h2>Posts by {{profile.author_name}}</h2> -->
     {% if posts%}
     {% for post in posts%}
     <div class="blog_card{{forloop.counter}} blog_card">
@@ -24,13 +21,13 @@ Home
             <div class="actual_content">{{post.content|safe}}</div>
             <div class="date_uploaded">Posted on: {{post.posted_on}}</div>
             <div class="author">By: <strong>
-                <a href="/posts/{{post.author.author_real.id}}" style="color: black;text-decoration: none;">{{post.author.author_name}}</a>
+                <a href="/posts/{{request.user.id}}" style="color: black;text-decoration: none;">{{post.author.author_name}}</a>
             </strong> | <span class="desc">{{post.author.occupation}} {%if post.author.occupation == 'Student'%} | {{post.author.clg_yr}} Yr.{%endif%}</span>
             </div>
             <div class="likes">Views:{{post.views}}</div>
             <button  class="submit_btn{{forloop.counter}} submit_btn" onclick="toggle_active('.blog_card{{forloop.counter}}','.submit_btn{{forloop.counter}}')">Read more..</button>
             
-            {% if request.user == post.author.author_real or user.is_superuser%}
+            {% if request.user == post.author.author_real%}
             <form action="/delete" method="get">
                 <input type="text" value="{{post.id}}" hidden name="post_id">
                 <button class="submit_btn" style="background-color: rgba(198, 5, 5, 0.744);" type="submit">Delete</button>
@@ -48,14 +45,4 @@ Home
     {%endif%}
 </div>
 
-<script>
-    let buttons = document.querySelectorAll('.submit_btn')
-    let cards = document.querySelectorAll('.blog_cards')
-    function toggle_active(e,btn){
-        t = document.querySelector(e)
-        t.classList.toggle('active')
-        b = document.querySelector(btn)
-        // b.textContent = "Close"
-    }
-</script>
 {%endblock body%}

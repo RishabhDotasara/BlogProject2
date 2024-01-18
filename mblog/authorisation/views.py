@@ -19,10 +19,12 @@ def login_user(request):
             login(request,user=user)
             print("Logged_In")
             # messages.success(request,'Logged in succesfully.')
+            messages.success(request,"Login successful!")
             return redirect('home')
         else:
             # messages.error(request,'Authentication Failed! Please try logging in again.')
-            return redirect('login')
+            messages.error(request,"No such user found, please consider making account.")
+            return redirect('/auth/signup')
         
     elif request.user.is_authenticated:
         logout(request=request)
@@ -40,8 +42,8 @@ def signup_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username,password=password)
             login(request,user=user)
-
-            return redirect('profile')
+            messages.success(request,"Account created successfully!")
+            return redirect('/profile')
 
     else:
         form = UserCreationForm()    

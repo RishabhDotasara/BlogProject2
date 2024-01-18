@@ -7,6 +7,7 @@
     font-family: 'Courier Prime', monospace;
     font-family: 'Kanit', sans-serif;
     font-family: 'Poppins', sans-serif;
+    user-select: none;
 }
 
 nav
@@ -20,7 +21,7 @@ nav
     align-items: center;
     justify-content: space-around ;
     background: black;
-    gap: 10px;
+    /* gap: 10px; */
 }
 
 nav .logo
@@ -34,14 +35,61 @@ nav .logo
 nav .user
 {
     /* margin-right: 30px; */
-    /* background-color: green;  */
+    background-color: rgba(255, 255, 255, 0.443); 
     padding: 10px;
-    width: 60px;
+    height: 100vh;
+    position: fixed;
+    right: -300px;
+    top: 0;
+    width: 300PX;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 10px;
+    justify-content: top;
+    flex-direction: column;
+    gap: 0px;
+    transition: 0.2s linear;
+    backdrop-filter: blur(15px);
+    opacity: 0;
+    
+}
+
+nav .user.active
+{
+    opacity: 1;
+    right: 0;
+}
+
+
+nav .user.active .hamburger
+{
+    z-index: 5;
+    color: white;
+    width: 10px;
+    height: 10px;
+}
+
+nav .user.active .hamburger svg
+{
+    height: 20px;
+    width: 20px;
+}
+
+nav .user .buttons
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 60px;
+    width: 100%;
+}
+
+
+nav .user .header
+{
+    font-size: 40px;
+    color: black;
+    font-weight: bold;
+    margin-top: 30px;
 }
 
 nav .search_box
@@ -77,24 +125,62 @@ nav .search_box button
 }
 nav .user .login_btn
 {
-    height: 34px;
-    width: 30px;
-    background: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    width: fit-content;
-    color: black;
+    width: 100%;
+    /* background: yellow; */
+    padding: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 18px;
 }
 
-footer
+nav .user .close_btn
 {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    background: black;
-    color: white    ;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.home_btn
+{
+    position: fixed;
+    left: 500px;
+    top: 500px;
+    background-color: white;
+    color: black;
+    z-index: 999;
+}
+
+nav .hamburger
+{
+    /* display: none; */
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width:1000px){
+    
+    nav .search_box 
+    {
+        /* display: none; */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        width: 100vw;
+        border: 0.2px solid black;
+        border-radius: 0px;
+        box-shadow: 0px 0px 8px 2px grey;
+
+    }
+
+    nav
+    {
+        justify-content: space-around;
+        gap: 150px;
+    }
+
+  
 }

@@ -60,7 +60,10 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    aspect-ratio: 1/1;
+    border: none;
+    background-position: center;
+    border-radius: 10px;
+    /* aspect-ratio: 1/1; */
 }
 
 
@@ -185,4 +188,27 @@
 .wrapper .blog_card.active .submit_btn
 {
     display: none;
+}
+
+@media only screen and (max-width:1000px){
+    
+    .wrapper .blog_card
+    {
+        width: 85vw;
+        margin: 0;
+        /* padding: 0; */
+    }
+
+    .wrapper .blog_card .image img 
+    {
+        object-fit: fill;
+        object-position: center;
+        background-position: center;
+    }
+
+    .wrapper .blog_card.active
+    {
+        width: 90vw;
+        left: 0;
+    }
 }

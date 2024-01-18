@@ -1,18 +1,10 @@
-{% extends 'base.html'%}
+{%extends 'base.html'%}
 {%block title%}
-Home
-{%endblock title%} 
-<style>
-    .active
-    {
-        width: 100vw;
-    }
-</style>
-
+Posts-{{request.user.username}}
+{%endblock title%}
 {%block body%}
-<div class="wrapper">
-    {% if posts%}
-    {% for post in posts%}
+<div class="wrapper" style="flex-direction: column;gap: 0;">
+    <h2>Do you really want to delete this post?</h2><br>
     <div class="blog_card{{forloop.counter}} blog_card">
         <div class="image" >
             <img src="{{post.thumbnail.url}}" alt="image">
@@ -23,15 +15,13 @@ Home
             
             <div class="actual_content">{{post.content|safe}}</div>
             <div class="date_uploaded">Posted on: {{post.posted_on}}</div>
-            <div class="author">By: <strong>
-                <a href="/posts/{{post.author.author_real.id}}" style="color: black;text-decoration: none;">{{post.author.author_name}}</a>
-            </strong> | <span class="desc">{{post.author.occupation}} {%if post.author.occupation == 'Student'%} | {{post.author.clg_yr}} Yr.{%endif%}</span>
-            </div>
+            <div class="author">By: <strong>{{post.author.author_name}}</strong> | <span class="desc">{{post.author.occupation}} {%if post.author.occupation == 'Student'%} | {{post.author.clg_yr}} Yr.{%endif%}</span></div>
             <div class="likes">Views:{{post.views}}</div>
-            <button  class="submit_btn{{forloop.counter}} submit_btn" onclick="toggle_active('.blog_card{{forloop.counter}}','.submit_btn{{forloop.counter}}')">Read more..</button>
+
             
             {% if request.user == post.author.author_real or user.is_superuser%}
-            <form action="/delete" method="get">
+            <form action="" method="post">
+                {%csrf_token%}
                 <input type="text" value="{{post.id}}" hidden name="post_id">
                 <button class="submit_btn" style="background-color: rgba(198, 5, 5, 0.744);" type="submit">Delete</button>
             </form>
@@ -44,18 +34,5 @@ Home
             {{post.body|safe}}
         </div>
     </div>
-    {%endfor%}
-    {%endif%}
 </div>
-
-<script>
-    let buttons = document.querySelectorAll('.submit_btn')
-    let cards = document.querySelectorAll('.blog_cards')
-    function toggle_active(e,btn){
-        t = document.querySelector(e)
-        t.classList.toggle('active')
-        b = document.querySelector(btn)
-        // b.textContent = "Close"
-    }
-</script>
 {%endblock body%}
