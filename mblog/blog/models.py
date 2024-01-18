@@ -76,7 +76,7 @@ class Profile(models.Model):
         return self.is_stu
 
 class Post(models.Model):
-    post_id = models.IntegerField(default=0,unique=True)
+    
     author = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True,blank=True,default='')
     title = models.CharField(max_length=255,default="No Title")
     views = models.IntegerField(default=0)

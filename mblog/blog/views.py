@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import *
 from .forms import CreatePost,CreateProfile
-
+from django.contrib import messages
 
 
 # Create your views here.
@@ -58,7 +58,7 @@ def update_profile(request):
             print(p.author_name)
         else:
             p.save() 
-
+        messages.success(request,'Profile updated successfully!')
         return redirect('profile_show')
     else:
         # p = Profile.objects.filter(author_real=request.user)[0]
@@ -80,8 +80,8 @@ def create_post(request):
             post.post_id = Post.objects.all().count() + 1
             post.author = profile_inst
             post.save()
-            
-            
+        messages.success(request,'Posted successfully!')
+        return redirect("/")
                 
     else:
         print('JUST a VISIT!')
@@ -93,3 +93,25 @@ def profile(request):
     profile = Profile.objects.filter(author_real=request.user).first()
 
     return render(request,'profile_show.html',{'profile':profile})
+
+def delete_post(request):
+    post_id = request.GET.get('post_id')
+    post = Post.objects.filter(id=post_id).first()
+    if request.method == "POST":
+        print("POST REQUEST")
+        post.delete()
+        messages.success(request,"Post deleted successfully!")
+        return redirect('/')
+    else:
+           
+        return render(request,'delete_post.html',{"post":post})
+
+def user_posts(request,user_id):
+    print(user_id)
+    user = User.objects.filter(id=user_id).first()
+    print(user)
+    profile = Profile.objects.filter(author_real=user).first()
+    print(profile)
+    posts = Post.objects.all().filter(author=profile)
+    
+    return render(request,'user_posts.html',{"profile":profile,"posts":posts})

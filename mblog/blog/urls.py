@@ -22,5 +22,7 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('profile/',views.profile,name='profile_show'),
     path('update_profile/',views.update_profile,name='update_profile'),
-    path('create_post/',views.create_post,name='create_post')
+    path('create_post/',views.create_post,name='create_post'),
+    path('delete/',views.delete_post,name='delete_post'),
+    path('posts/<int:user_id>',views.user_posts,name='user_posts')
 ]
